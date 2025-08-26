@@ -197,7 +197,36 @@ namespace WinForm_CRUD_SqliteConn
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (lvwMahasiswa.SelectedItems.Count > 0)
+            {
+                string nim = lvwMahasiswa.SelectedItems[0].SubItems[1].Text;
 
+                try
+                {
+                    using (var conn = GetOpenConnection())
+                    {
+                        string sql = "UPDATE mahasiswa SET nama=@nama, kelas=@kelas WHERE nim=@nim";
+                        using (var cmd = new SQLiteCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@nama", txtNama.Text);
+                            cmd.Parameters.AddWithValue("@kelas", txtKelas.Text);
+                            cmd.Parameters.AddWithValue("@nim", nim);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Data berhasil diupdate.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TampilkanData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih data yang akan diedit.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void lvwMahasiswa_SelectedIndexChanged(object sender, EventArgs e)

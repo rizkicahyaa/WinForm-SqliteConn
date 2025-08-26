@@ -105,5 +105,20 @@ namespace WinForm_CRUD_SqliteConn
         {
             TampilkanData();
         }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (lvwMahasiswa.SelectedItems.Count > 0)
+            {
+                var index = lvwMahasiswa.SelectedIndices[0];
+                list.RemoveAt(index);
+                TampilkanData();
+                MessageBox.Show("Data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Pilih data yang akan dihapus.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

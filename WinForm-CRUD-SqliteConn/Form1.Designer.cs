@@ -101,6 +101,7 @@
             this.btnSimpan.TabIndex = 8;
             this.btnSimpan.Text = "Simpan";
             this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // btnReset
             // 
@@ -132,6 +133,7 @@
             this.btnTampilkan.TabIndex = 11;
             this.btnTampilkan.Text = "Tampilkan Data";
             this.btnTampilkan.UseVisualStyleBackColor = true;
+            this.btnTampilkan.Click += new System.EventHandler(this.btnTampilkan_Click);
             // 
             // btnHapus
             // 
@@ -166,6 +168,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SQLiteCRUD";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);

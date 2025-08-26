@@ -30,6 +30,14 @@ namespace WinForm_CRUD_SqliteConn
             lvwMahasiswa.Columns.Add("Kelas", 70, HorizontalAlignment.Center);
         }
 
+        private void ResetForm()
+        {
+            txtNim.Clear();
+            txtNama.Clear();
+            txtKelas.Clear();
+            txtNim.Focus();
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -43,6 +51,11 @@ namespace WinForm_CRUD_SqliteConn
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetForm();
         }
     }
 }

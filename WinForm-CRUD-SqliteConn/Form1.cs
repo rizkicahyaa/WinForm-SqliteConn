@@ -15,6 +15,34 @@ namespace WinForm_CRUD_SqliteConn
         public Form1()
         {
             InitializeComponent();
+            InisialisasiListView();
+        }
+
+        private void InisialisasiListView()
+        {
+            lvwMahasiswa.View = View.Details;
+            lvwMahasiswa.FullRowSelect = true;
+            lvwMahasiswa.GridLines = true;
+
+            lvwMahasiswa.Columns.Add("No.", 30, HorizontalAlignment.Center);
+            lvwMahasiswa.Columns.Add("Nim", 91, HorizontalAlignment.Center);
+            lvwMahasiswa.Columns.Add("Nama", 200, HorizontalAlignment.Left);
+            lvwMahasiswa.Columns.Add("Kelas", 70, HorizontalAlignment.Center);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

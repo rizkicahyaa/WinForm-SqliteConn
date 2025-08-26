@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SQLite;
+
 namespace WinForm_CRUD_SqliteConn
 {
     public partial class Form1 : Form
@@ -63,6 +65,26 @@ namespace WinForm_CRUD_SqliteConn
             }
 
         }
+
+        public static SQLiteConnection GetOpenConnection()
+        {
+            SQLiteConnection conn = null;
+            try
+            {
+                string dbName = @"C:\Users\user\source\repos\WinForm-CRUD-SqliteConn\Database\DbMahasiswa.db";
+                string connectionString = string.Format("Data Source ={0}; FailIfMissing = True", dbName);
+
+                conn = new SQLiteConnection(connectionString);
+                conn.Open(); // buka koneksi ke database
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return conn;
+
+        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -120,5 +142,22 @@ namespace WinForm_CRUD_SqliteConn
                 MessageBox.Show("Pilih data yang akan dihapus.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void btnTesKoneksi_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection conn = GetOpenConnection();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                MessageBox.Show("Koneksi ke database berhasil.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Koneksi ke database gagal.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                conn.Dispose();
+            }
+        }
+
+  
     }
 }

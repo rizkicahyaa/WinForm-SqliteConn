@@ -40,6 +40,7 @@
             this.btnTampilkan = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.lvwMahasiswa = new System.Windows.Forms.ListView();
+            this.btnTesKoneksi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,6 +116,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTesKoneksi);
             this.groupBox1.Controls.Add(this.lvwMahasiswa);
             this.groupBox1.Controls.Add(this.btnHapus);
             this.groupBox1.Controls.Add(this.btnTampilkan);
@@ -154,6 +156,16 @@
             this.lvwMahasiswa.TabIndex = 12;
             this.lvwMahasiswa.UseCompatibleStateImageBehavior = false;
             // 
+            // btnTesKoneksi
+            // 
+            this.btnTesKoneksi.Location = new System.Drawing.Point(333, 39);
+            this.btnTesKoneksi.Name = "btnTesKoneksi";
+            this.btnTesKoneksi.Size = new System.Drawing.Size(113, 33);
+            this.btnTesKoneksi.TabIndex = 13;
+            this.btnTesKoneksi.Text = "Tes Koneksi";
+            this.btnTesKoneksi.UseVisualStyleBackColor = true;
+            this.btnTesKoneksi.Click += new System.EventHandler(this.btnTesKoneksi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.ListView lvwMahasiswa;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnTampilkan;
+        private System.Windows.Forms.Button btnTesKoneksi;
     }
 }
 

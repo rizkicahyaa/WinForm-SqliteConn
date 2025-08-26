@@ -54,16 +54,24 @@ namespace WinForm_CRUD_SqliteConn
         {
             lvwMahasiswa.Items.Clear();
 
-            foreach (var mhs in list)
+            using (var conn = GetOpenConnection())
             {
-                var noUrut = lvwMahasiswa.Items.Count + 1;
-                var item = new ListViewItem(noUrut.ToString());
-                item.SubItems.Add(mhs.Nim);
-                item.SubItems.Add(mhs.Nama);
-                item.SubItems.Add(mhs.Kelas);
-                lvwMahasiswa.Items.Add(item);
+                string sql = "SELECT * FROM mahasiswa";
+                using (var cmd = new SQLiteCommand(sql, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    int noUrut = 1;
+                    while (reader.Read())
+                    {
+                        var item = new ListViewItem(noUrut.ToString());
+                        item.SubItems.Add(reader["nim"].ToString());
+                        item.SubItems.Add(reader["nama"].ToString());
+                        item.SubItems.Add(reader["kelas"].ToString());
+                        lvwMahasiswa.Items.Add(item);
+                        noUrut++;
+                    }
+                }
             }
-
         }
 
         public static SQLiteConnection GetOpenConnection()
@@ -158,6 +166,14 @@ namespace WinForm_CRUD_SqliteConn
             }
         }
 
-  
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvwMahasiswa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

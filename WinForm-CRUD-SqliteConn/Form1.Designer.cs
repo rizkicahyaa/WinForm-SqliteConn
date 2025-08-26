@@ -37,17 +37,18 @@
             this.btnSimpan = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnTampilkan = new System.Windows.Forms.Button();
-            this.btnHapus = new System.Windows.Forms.Button();
-            this.lvwMahasiswa = new System.Windows.Forms.ListView();
             this.btnTesKoneksi = new System.Windows.Forms.Button();
+            this.lvwMahasiswa = new System.Windows.Forms.ListView();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnTampilkan = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 30);
+            this.label1.Location = new System.Drawing.Point(30, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 0;
@@ -57,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 88);
+            this.label2.Location = new System.Drawing.Point(30, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 1;
@@ -67,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 146);
+            this.label3.Location = new System.Drawing.Point(30, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 2;
@@ -75,28 +76,28 @@
             // 
             // txtNim
             // 
-            this.txtNim.Location = new System.Drawing.Point(121, 27);
+            this.txtNim.Location = new System.Drawing.Point(121, 42);
             this.txtNim.Name = "txtNim";
             this.txtNim.Size = new System.Drawing.Size(216, 26);
             this.txtNim.TabIndex = 4;
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(121, 85);
+            this.txtNama.Location = new System.Drawing.Point(121, 100);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(284, 26);
             this.txtNama.TabIndex = 5;
             // 
             // txtKelas
             // 
-            this.txtKelas.Location = new System.Drawing.Point(121, 143);
+            this.txtKelas.Location = new System.Drawing.Point(121, 158);
             this.txtKelas.Name = "txtKelas";
             this.txtKelas.Size = new System.Drawing.Size(216, 26);
             this.txtKelas.TabIndex = 6;
             // 
             // btnSimpan
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(34, 214);
+            this.btnSimpan.Location = new System.Drawing.Point(34, 229);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(113, 33);
             this.btnSimpan.TabIndex = 8;
@@ -106,7 +107,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(176, 214);
+            this.btnReset.Location = new System.Drawing.Point(176, 229);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 9;
@@ -116,6 +117,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnTesKoneksi);
             this.groupBox1.Controls.Add(this.lvwMahasiswa);
             this.groupBox1.Controls.Add(this.btnHapus);
@@ -127,25 +129,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Daftar Mahasiswa";
             // 
-            // btnTampilkan
+            // btnTesKoneksi
             // 
-            this.btnTampilkan.Location = new System.Drawing.Point(9, 39);
-            this.btnTampilkan.Name = "btnTampilkan";
-            this.btnTampilkan.Size = new System.Drawing.Size(156, 33);
-            this.btnTampilkan.TabIndex = 11;
-            this.btnTampilkan.Text = "Tampilkan Data";
-            this.btnTampilkan.UseVisualStyleBackColor = true;
-            this.btnTampilkan.Click += new System.EventHandler(this.btnTampilkan_Click);
-            // 
-            // btnHapus
-            // 
-            this.btnHapus.Location = new System.Drawing.Point(189, 39);
-            this.btnHapus.Name = "btnHapus";
-            this.btnHapus.Size = new System.Drawing.Size(113, 33);
-            this.btnHapus.TabIndex = 11;
-            this.btnHapus.Text = "Hapus";
-            this.btnHapus.UseVisualStyleBackColor = true;
-            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            this.btnTesKoneksi.Location = new System.Drawing.Point(468, 39);
+            this.btnTesKoneksi.Name = "btnTesKoneksi";
+            this.btnTesKoneksi.Size = new System.Drawing.Size(113, 33);
+            this.btnTesKoneksi.TabIndex = 13;
+            this.btnTesKoneksi.Text = "Tes Koneksi";
+            this.btnTesKoneksi.UseVisualStyleBackColor = true;
+            this.btnTesKoneksi.Click += new System.EventHandler(this.btnTesKoneksi_Click);
             // 
             // lvwMahasiswa
             // 
@@ -155,16 +147,37 @@
             this.lvwMahasiswa.Size = new System.Drawing.Size(586, 332);
             this.lvwMahasiswa.TabIndex = 12;
             this.lvwMahasiswa.UseCompatibleStateImageBehavior = false;
+            this.lvwMahasiswa.SelectedIndexChanged += new System.EventHandler(this.lvwMahasiswa_SelectedIndexChanged);
             // 
-            // btnTesKoneksi
+            // btnHapus
             // 
-            this.btnTesKoneksi.Location = new System.Drawing.Point(333, 39);
-            this.btnTesKoneksi.Name = "btnTesKoneksi";
-            this.btnTesKoneksi.Size = new System.Drawing.Size(113, 33);
-            this.btnTesKoneksi.TabIndex = 13;
-            this.btnTesKoneksi.Text = "Tes Koneksi";
-            this.btnTesKoneksi.UseVisualStyleBackColor = true;
-            this.btnTesKoneksi.Click += new System.EventHandler(this.btnTesKoneksi_Click);
+            this.btnHapus.Location = new System.Drawing.Point(196, 39);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(113, 33);
+            this.btnHapus.TabIndex = 11;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            // 
+            // btnTampilkan
+            // 
+            this.btnTampilkan.Location = new System.Drawing.Point(17, 39);
+            this.btnTampilkan.Name = "btnTampilkan";
+            this.btnTampilkan.Size = new System.Drawing.Size(156, 33);
+            this.btnTampilkan.TabIndex = 11;
+            this.btnTampilkan.Text = "Tampilkan Data";
+            this.btnTampilkan.UseVisualStyleBackColor = true;
+            this.btnTampilkan.Click += new System.EventHandler(this.btnTampilkan_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(332, 39);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(113, 33);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // Form1
             // 
@@ -205,6 +218,7 @@
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnTampilkan;
         private System.Windows.Forms.Button btnTesKoneksi;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

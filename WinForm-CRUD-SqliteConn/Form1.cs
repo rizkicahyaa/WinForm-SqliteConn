@@ -149,10 +149,30 @@ namespace WinForm_CRUD_SqliteConn
         {
             if (lvwMahasiswa.SelectedItems.Count > 0)
             {
-                var index = lvwMahasiswa.SelectedIndices[0];
-                list.RemoveAt(index);
-                TampilkanData();
-                MessageBox.Show("Data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string nim = lvwMahasiswa.SelectedItems[0].SubItems[1].Text;
+
+                DialogResult result = MessageBox.Show(
+                    "Apakah Anda yakin ingin menghapus data dengan NIM: " + nim + "?",
+                    "Konfirmasi Hapus",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    using (var conn = GetOpenConnection())
+                    {
+                        string sql = "DELETE FROM mahasiswa WHERE nim=@nim";
+                        using (var cmd = new SQLiteCommand(sql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@nim", nim);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    TampilkanData();
+                    MessageBox.Show("Data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -182,7 +202,12 @@ namespace WinForm_CRUD_SqliteConn
 
         private void lvwMahasiswa_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (lvwMahasiswa.SelectedItems.Count > 0)
+            {
+                txtNim.Text = lvwMahasiswa.SelectedItems[0].SubItems[1].Text;
+                txtNama.Text = lvwMahasiswa.SelectedItems[0].SubItems[2].Text;
+                txtKelas.Text = lvwMahasiswa.SelectedItems[0].SubItems[3].Text;
+            }
         }
     }
 }

@@ -116,19 +116,28 @@ namespace WinForm_CRUD_SqliteConn
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            Mahasiswa mhs = new Mahasiswa();
+            try
+            {
+                using (var conn = GetOpenConnection())
+                {
+                    string sql = "INSERT INTO mahasiswa (nim, nama, kelas) VALUES (@nim, @nama, @kelas)";
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nim", txtNim.Text);
+                        cmd.Parameters.AddWithValue("@nama", txtNama.Text);
+                        cmd.Parameters.AddWithValue("@kelas", txtKelas.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
 
-            mhs.Nim = txtNim.Text;
-            mhs.Nama = txtNama.Text;
-            mhs.Kelas = txtKelas.Text;
-
-            list.Add(mhs);
-
-            var message = "Data berhasil disimpan.";
-
-            MessageBox.Show(message, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            ResetForm();
+                MessageBox.Show("Data berhasil disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetForm();
+                TampilkanData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnTampilkan_Click(object sender, EventArgs e)
